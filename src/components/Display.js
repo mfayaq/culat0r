@@ -5,8 +5,8 @@ export class Display extends Component {
     return (
       <div className="display-parent">
         <div className="display">
-          {this.props.input.map(value => (
-            <span>{value}</span>
+          {this.props.input.map((value,i) => (
+            <span key={i}>{value}</span>
           ))}
         </div>
       </div>

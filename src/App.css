@@ -84,7 +84,11 @@
   /* outline: 1px solid #888; */
 }
 
-.operator {
+.clear {
   background-color: #fe9241;
   color: #fff;
+}
+
+.operator {
+  color : #fe9241;
 }

@@ -5,7 +5,7 @@ export class Keypad extends Component {
     render() {
         return (
             <div className='keypad'>
-                {this.props.values.map(value => (
+                {this.props.values.map((value) => (
                     <Button key={value} value={value} performOperation={this.props.performOperation}/>
         ))}
             </div>
