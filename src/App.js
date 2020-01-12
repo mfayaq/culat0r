@@ -79,7 +79,7 @@ class App extends Component {
       let lastDigit = this.state.inputs.slice(-1)[0];
       if (lastDigit === undefined) {
         //donothing
-      } else if (lastDigit == 0) {
+      } else if (lastDigit == 0&&!this.state.inputs.includes('.')) {
         this.state.inputs.pop()
         this.setState({
           inputs: this.state.inputs.concat(value)
