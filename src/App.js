@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       inputs: [0],
       values: [
+        "0",
         "1",
         "2",
         "3",
@@ -18,6 +19,7 @@ class App extends Component {
         "7",
         "8",
         "9",
+        ".",
         "+",
         "-",
         "/",
@@ -40,26 +42,6 @@ class App extends Component {
             inputs: result
           });
           break;
-        case "+":
-          this.setState({
-            inputs: this.state.inputs.concat(value)
-          });
-          break;
-        case "-":
-          this.setState({
-            inputs: this.state.inputs.concat(value)
-          });
-          break;
-        case "/":
-          this.setState({
-            inputs: this.state.inputs.concat(value)
-          });
-          break;
-        case "*":
-          this.setState({
-            inputs: this.state.inputs.concat(value)
-          });
-          break;
         case "C":
           if (this.state.inputs.length > 1) {
             this.state.inputs.pop();
@@ -76,6 +58,11 @@ class App extends Component {
         case "AC":
           this.setState({
             inputs: [0]
+          });
+          break;
+        default:
+          this.setState({
+            inputs: this.state.inputs.concat(value)
           });
           break;
       }
