@@ -35,9 +35,18 @@ class App extends Component {
     if (isNaN(value)) {
       switch (value) {
         case "=":
-          const result = eval(this.state.inputs.join(""))
+          let result
+          try {
+            result = eval(this.state.inputs.join(""))
             .toString()
             .split("");
+          } catch (e) {
+            if (e instanceof SyntaxError) {
+              
+          } else {
+              throw( e );
+          }
+          }
           this.setState({
             inputs: result
           });
@@ -70,9 +79,10 @@ class App extends Component {
       let lastDigit = this.state.inputs.slice(-1)[0];
       if (lastDigit === undefined) {
         //donothing
-      } else if (this.state.inputs.length == 1 && this.state.inputs[0] == 0) {
+      } else if (lastDigit == 0) {
+        this.state.inputs.pop()
         this.setState({
-          inputs: [value]
+          inputs: this.state.inputs.concat(value)
         });
       } else {
         this.setState({

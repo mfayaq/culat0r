@@ -77,18 +77,22 @@
   flex: 1 1 100px;
   justify-content: center;
   align-items: center;
-  font-weight: lighter;
+  font-weight: normal;
   font-size: 1.4em;
-  background-color: #e0e1e6;
-  color: #888;
+  background-color: #e3e1e6;
+  color: rgb(0, 0, 0);
   /* outline: 1px solid #888; */
 }
 
 .clear {
-  background-color: #fe9241;
+  background-color: #ff8b33;
   color: #fff;
 }
 
+.error{
+  color: red;
+}
+
 .operator {
-  color : #fe9241;
+  color : #ff6f00;
 }
