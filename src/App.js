@@ -31,6 +31,22 @@ class App extends Component {
     };
   }
 
+  checkForZero = ()=> {
+    let arr = [...this.state.inputs]
+    // console.log(arr)
+    // let counter =0
+    if (arr.length==1) {
+      return true;
+    }
+    else{
+      let secondTop = arr.slice(-2)[0]
+      if (isFinite(secondTop)) {
+        return false
+      }
+      return true
+    }
+  }
+
   performOperation = value => {
     if (isNaN(value)) {
       switch (value) {
@@ -53,9 +69,9 @@ class App extends Component {
           break;
         case "C":
           if (this.state.inputs.length > 1) {
-            this.state.inputs.pop();
+            // this.state.inputs.pop();
             this.setState({
-              inputs: this.state.inputs
+              inputs: this.state.inputs.slice(0,this.state.inputs.length-1)
             });
           }
           else{
@@ -71,7 +87,7 @@ class App extends Component {
           break;
         default:
           this.setState({
-            inputs: this.state.inputs.concat(value)
+            inputs: [...this.state.inputs,value]
           });
           break;
       }
@@ -79,14 +95,14 @@ class App extends Component {
       let lastDigit = this.state.inputs.slice(-1)[0];
       if (lastDigit === undefined) {
         //donothing
-      } else if (lastDigit == 0&&!this.state.inputs.includes('.')) {
-        this.state.inputs.pop()
+      } else if (lastDigit == 0&&!this.state.inputs.includes('.')&&this.checkForZero()) {
         this.setState({
-          inputs: this.state.inputs.concat(value)
+          inputs: [...this.state.inputs.slice(0,this.state.inputs.length-1),value]
         });
       } else {
+        // this.state.inputs.pop()condition
         this.setState({
-          inputs: this.state.inputs.concat(value)
+          inputs: [...this.state.inputs,value]
         });
       }
     }
